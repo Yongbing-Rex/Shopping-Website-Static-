@@ -1,0 +1,19 @@
+html,body{
+    height:100%;
+    margin: 1px;
+}
+
+/* header */
+.header {
+    width:100%;
+    height:140px;
+    border:1px solid #ddd;
+    /* background-color: rgb(217, 26, 29); */
+}
+
+#a{
+    margin:auto;
+    border-color: black;
+}
+
+
