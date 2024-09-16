@@ -178,7 +178,80 @@ document.onscroll = function(){
 }
 
 
+let forward = document.querySelector('.forword')
+let backword = document.querySelector('.backword')
+let spec_ul = document.querySelector('.spec-items ul')
+let lis = document.querySelectorAll('.spec-items ul li')
+let img_mid = document.querySelector('.img-mid')
+let main_img = document.querySelector('.main-img')
+let zoompup = document.querySelector('.zoom-pup')
+let zoomdiv = document.querySelector('.zoom-div')
 
+backword.onclick = function(){
+    spec_ul.style.left = '-40px'
+}
+
+forward.onclick = function(){
+    spec_ul.style.left = '-98px'
+}
+
+for(let i = 0; i< lis.length; i++){
+    lis[i].onmouseover = function(){
+        for(let j = 0; j<lis.length;j++){
+            lis[j].className = ''
+        }
+
+        lis[i].className = 'img-hover'
+
+        img_mid.src = lis[i].children[0].src
+    }
+}
+
+main_img.onmouseover = function(e){
+    zoomdiv.style.display = 'block'
+    
+    zoompup.style.display = 'block'
+
+}
+
+main_img.onmouseout = function(){
+    zoomdiv.style.display = 'none'
+    zoompup.style.display = 'none'
+}
+
+
+main_img.onmousemove = function(e){
+    let pageY = e.pageY
+
+    let pageX = e.pageX
+
+    let offsetTop = 930;
+
+    let offsetLeft = main_img.offsetLeft
+
+    let zoom_h = zoompup.clientHeight/2
+
+    let zoom_l = zoompup.clientWidth/2
+
+    let top = pageY - offsetTop - zoom_h
+
+    let left = pageX - offsetLeft - zoom_l
+
+    if(top <= 0){
+        top = 0
+    }else if(top > (img_mid.clientHeight - zoompup.clientHeight)){
+        top = img_mid.clientHeight - zoompup.clientHeight
+    }
+
+     if(left <= 0){
+        left = 0
+    }else if(top > (img_mid.clientWidth - zoompup.clientWidth)){
+        left = img_mid.clientWidth - zoompup.clientWidth
+    }
+
+    zoompup.style.top = top + 'px'
+    zoompup.style.left = left + 'px'
+}
 
 
 
